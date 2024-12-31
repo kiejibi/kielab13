@@ -19,3 +19,48 @@ int main(){
     cout << "Min = " << B[5];
     return 0;
 }
+
+void stat(const double spiderman[], int N, double spidergirl[])
+{
+    double ari = 0;
+    for (int i = 0; i < N; i++)
+    {
+        ari += spiderman[i];
+    }
+    ari /= N;
+    spidergirl[0] = ari;
+
+    double geo = 1;
+    for (int i = 0; i < N; i++)
+    {
+        geo *= spiderman[i];
+    }
+    geo = pow(geo, 1.0 / N);
+
+    spidergirl[2] = geo;
+
+    double har = 0;
+    for (int i = 0; i < N; i++)
+    {
+        har += 1 / spiderman[i];
+    }
+    spidergirl[3] = N / har;
+
+    double max = spiderman[0], min = spiderman[0];
+    for (int i = 0; i < N; i++)
+    {
+        if (spiderman[i] > max)
+            max = spiderman[i];
+        else if (spiderman[i] < min)
+            min = spiderman[i];
+    }
+    spidergirl[4] = max;
+    spidergirl[5] = min;
+
+    double stand = 0;
+    for (int i = 0; i < N; i++)
+    {
+        stand += pow(spiderman[i] - spidergirl[0], 2);
+    }
+    spidergirl[1] = sqrt(stand / N);
+}
